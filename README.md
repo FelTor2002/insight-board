@@ -1,53 +1,61 @@
 ﻿# Insight Board
 
-Modern analytics dashboard built with Angular and TypeScript. This project is designed as a portfolio highlight focused on frontend quality, data visualization, and UX.
+> Dashboard de analítica moderno, bilingüe y responsive construido con Angular + TypeScript.
 
-## Author
-Felipe Torres
+[🇪🇸 Español](#-español) | [🇺🇸 English](#-english)
 
-## Description
-Insight Board is a responsive SaaS-style dashboard with a dark theme, bilingual interface (English/Spanish), KPI cards, interactive filters, charts, and reporting views powered by local mock data.
+---
 
-## Features
-- KPI cards:
-  - Total Sales
-  - Active Users
-  - Conversion Rate
-  - Revenue Growth
-- Data visualizations:
-  - Monthly sales line chart
-  - Revenue by category bar chart
-  - User channel distribution doughnut chart
-- Transactions table:
-  - Columns: ID, client, category, amount, status, date
-  - Visual status badges: Completed, Pending, Cancelled
-- Filters:
-  - Category
-  - Status
-  - Client search
-  - Date range
-- UI/UX:
-  - Dark SaaS design
-  - Sidebar navigation with routed sections
-  - Rounded cards with spacing hierarchy
-  - Fully responsive for desktop, tablet, and mobile
-- Multi-view architecture:
-  - Dashboard view (KPIs, charts, filters, transactions)
-  - Analytics view (category and channel insights)
-  - Reports view (monthly summary and CSV export)
-  - Settings view (language preferences and locale preview)
-- Internationalization:
-  - English and Spanish support
-  - Locale-aware date and currency formatting
+## 🇪🇸 Español
 
-## Tech Stack
-- Angular (standalone components)
+### Descripción
+**Insight Board** es un proyecto de portafolio orientado a frontend, data analytics y UX.
+Incluye una interfaz tipo SaaS con tema oscuro, visualización de KPIs, gráficas interactivas, filtros y vistas adicionales para analítica, reportes y configuración.
+
+### Demo local
+- URL: `http://localhost:4200`
+
+### Autor
+**Felipe Torres**
+
+### Funcionalidades principales
+- Dashboard con KPIs:
+  - Ventas Totales
+  - Usuarios Activos
+  - Tasa de Conversión
+  - Crecimiento de Ingresos
+- Visualización de datos:
+  - Gráfica de línea (ventas mensuales)
+  - Gráfica de barras (ingresos por categoría)
+  - Gráfica doughnut (distribución por canal)
+- Tabla de transacciones:
+  - Columnas: ID, cliente, categoría, monto, estado, fecha
+  - Estados visuales: Completado, Pendiente, Cancelado
+- Filtros:
+  - Por categoría
+  - Por estado
+  - Búsqueda por cliente
+  - Rango de fecha
+- Navegación por secciones (routing):
+  - `Dashboard`
+  - `Analytics`
+  - `Reports`
+  - `Settings`
+- Internacionalización (i18n):
+  - Español / Inglés
+  - Formato de moneda y fecha por locale
+- Exportación:
+  - Reportes mensuales en **XLSX**
+
+### Stack tecnológico
+- Angular (componentes standalone)
 - TypeScript
-- CSS (modern custom variables + responsive layout)
+- CSS moderno (variables, layout responsive)
 - Chart.js
-- Local mock data
+- XLSX (`xlsx`) para exportación de reportes
+- Datos mock locales
 
-## Project Structure
+### Estructura del proyecto
 ```text
 src/
   app/
@@ -73,34 +81,83 @@ src/
   styles.css
 ```
 
-## Installation
+### Instalación
 ```bash
 npm install
 ```
 
-## Run Locally
+### Ejecutar en local
 ```bash
 npm start
 ```
 
-Open `http://localhost:4200/`.
-
-## Build
+### Build
 ```bash
 npm run build
 ```
 
-## Test
+### Tests
 ```bash
-npm test
+npx ng test --watch=false
 ```
 
-## Future Improvements
-- Add theme toggle (dark/light)
-- Add pagination and sorting in transactions table
-- Connect to real backend/API
-- Export charts and table data (CSV/PDF)
-- Add auth and role-based dashboard views
+### Flujo de ramas y commits recomendado
+Se está usando un enfoque tipo **GitHub Flow + Conventional Commits**:
+- Ramas por propósito: `feat/*`, `fix/*`, `docs/*`
+- Commits claros: `feat: ...`, `fix: ...`, `docs: ...`
+- PR por cambio acotado
 
-## Notes
-This project is intentionally modular, with clear separation between UI components, mock data, and TypeScript interfaces to keep it scalable and easy to maintain.
+### Mejoras futuras
+- Optimizar tamaño del bundle (lazy loading para exportación XLSX)
+- Paginación y ordenamiento en tabla
+- Integración con backend real
+- Exportación adicional (PDF)
+- Autenticación y roles
+
+---
+
+## 🇺🇸 English
+
+<details>
+  <summary>Open English version</summary>
+
+### Description
+**Insight Board** is a portfolio project focused on frontend quality, data analytics, and UX.
+It includes a modern SaaS-like dark UI with KPI cards, interactive charts, filters, and dedicated pages for analytics, reports, and settings.
+
+### Local demo
+- URL: `http://localhost:4200`
+
+### Author
+**Felipe Torres**
+
+### Main features
+- KPI dashboard (Total Sales, Active Users, Conversion Rate, Revenue Growth)
+- Charts (line, bar, doughnut)
+- Transactions table with status badges
+- Filters (category, status, customer search, date range)
+- Routed sections (`Dashboard`, `Analytics`, `Reports`, `Settings`)
+- Bilingual UI (Spanish/English) with locale-aware formats
+- Monthly report export in **XLSX**
+
+### Tech stack
+- Angular (standalone components)
+- TypeScript
+- Modern CSS
+- Chart.js
+- XLSX (`xlsx`) for report export
+- Local mock data
+
+### Setup
+```bash
+npm install
+npm start
+```
+
+### Build and test
+```bash
+npm run build
+npx ng test --watch=false
+```
+
+</details>
