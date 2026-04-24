@@ -1,0 +1,41 @@
+<section class="filter-bar">
+  <label>
+    Category
+    <select [ngModel]="filter.category" (ngModelChange)="update('category', $event)">
+      @for (category of categories; track category) {
+      <option [value]="category">{{ category }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Status
+    <select [ngModel]="filter.status" (ngModelChange)="update('status', $event)">
+      @for (status of statuses; track status) {
+      <option [value]="status">{{ status }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Search customer
+    <input
+      type="text"
+      [ngModel]="filter.search"
+      (ngModelChange)="update('search', $event)"
+      placeholder="Type customer name"
+    />
+  </label>
+
+  <label>
+    Date from
+    <input type="date" [ngModel]="filter.dateFrom" (ngModelChange)="update('dateFrom', $event)" />
+  </label>
+
+  <label>
+    Date to
+    <input type="date" [ngModel]="filter.dateTo" (ngModelChange)="update('dateTo', $event)" />
+  </label>
+
+  <button type="button" class="ghost" (click)="clearFilters.emit()">Clear</button>
+</section>

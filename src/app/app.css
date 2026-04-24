@@ -1,0 +1,144 @@
+:host {
+  display: block;
+  color: var(--text-main);
+}
+
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  background: radial-gradient(circle at 25% 10%, #18233a 0%, #0b1020 45%, #090d18 100%);
+}
+
+.sidebar {
+  border-right: 1px solid var(--border-color);
+  padding: 1.4rem 1rem;
+  background: rgba(9, 13, 24, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.sidebar h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.sidebar p {
+  margin: 0.4rem 0 1.2rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.sidebar a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  color: var(--text-main);
+  background: rgba(64, 214, 255, 0.12);
+}
+
+.main-content {
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.hero p {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--card-shadow);
+}
+
+.panel h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: 76px 1fr;
+  }
+
+  .sidebar h1,
+  .sidebar p,
+  .sidebar a {
+    font-size: 0;
+  }
+
+  .sidebar a {
+    height: 36px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+  }
+
+  .sidebar h1,
+  .sidebar p,
+  .sidebar a {
+    font-size: inherit;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .sidebar a {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .main-content {
+    padding: 0.85rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,45 @@
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  gap: 0.85rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  gap: 0.4rem;
+}
+
+select,
+input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: #111726;
+  color: var(--text-main);
+  padding: 0.6rem 0.7rem;
+}
+
+.ghost {
+  align-self: end;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-main);
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .filter-bar {
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .filter-bar {
+    grid-template-columns: 1fr;
+  }
+}

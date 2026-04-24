@@ -1,0 +1,33 @@
+.kpi-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--card-shadow);
+}
+
+.kpi-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.kpi-value {
+  color: var(--text-main);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  margin: 0.4rem 0;
+}
+
+.kpi-trend {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.kpi-trend.positive {
+  color: var(--success);
+}
+
+.kpi-trend.negative {
+  color: var(--danger);
+}

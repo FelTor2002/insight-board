@@ -1,0 +1,44 @@
+<div class="layout">
+  <aside class="sidebar">
+    <h1>Insight Board</h1>
+    <p>Training · Junior Developer</p>
+    <nav>
+      <a class="active" href="#">Dashboard</a>
+      <a href="#">Analytics</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="hero">
+      <h2>Analytics Overview</h2>
+      <p>Professional dashboard focused on frontend, data analytics and UX.</p>
+    </header>
+
+    <section class="kpi-grid">
+      @for (metric of kpis; track metric.label) {
+      <app-kpi-card
+        [label]="metric.label"
+        [value]="metric.value"
+        [trend]="metric.trend"
+        [trendPositive]="metric.trendPositive"
+      />
+      }
+    </section>
+
+    <section class="panel filters-panel">
+      <h3>Filters</h3>
+      <app-filter-bar
+        [filter]="filters"
+        [categories]="categories"
+        [statuses]="statuses"
+        (filterChange)="updateFilters($event)"
+        (clearFilters)="resetFilters()"
+      />
+    </section>
+
+    <app-charts-panel [transactions]="filteredTransactions" />
+    <app-transactions-table [transactions]="filteredTransactions" />
+  </main>
+</div>
