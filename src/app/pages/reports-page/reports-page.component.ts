@@ -1,6 +1,5 @@
 ﻿import { Component, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import * as XLSX from 'xlsx';
 import { TRANSACTIONS } from '../../mock-data/dashboard.data';
 import { I18nService } from '../../core/i18n.service';
 
@@ -62,7 +61,8 @@ export class ReportsPageComponent {
     return [...monthly.values()].sort((a, b) => a.monthKey.localeCompare(b.monthKey));
   }
 
-  exportXlsx(): void {
+  async exportXlsx(): Promise<void> {
+    const XLSX = await import('xlsx');
     const rows = [
       [this.text.month, this.text.revenue, this.text.completed, this.text.pending, this.text.cancelled],
       ...this.monthlyReports.map((report) => [
