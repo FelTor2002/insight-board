@@ -15,6 +15,9 @@ Incluye una interfaz tipo SaaS con tema oscuro, visualización de KPIs, gráfica
 ### Demo local
 - URL: `http://localhost:4200`
 
+### Live demo
+- Vercel: [https://insight-board-swart.vercel.app](https://insight-board-swart.vercel.app)
+
 ### Autor
 **Felipe Torres**
 
@@ -127,6 +130,9 @@ It includes a modern SaaS-like dark UI with KPI cards, interactive charts, filte
 
 ### Local demo
 - URL: `http://localhost:4200`
+
+### Live demo
+- Vercel: [https://insight-board-swart.vercel.app](https://insight-board-swart.vercel.app)
 
 ### Author
 **Felipe Torres**
