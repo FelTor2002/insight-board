@@ -81,4 +81,25 @@ th {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .table-shell {
+    padding: 0.8rem;
+  }
+
+  table {
+    min-width: 520px;
+  }
+
+  th,
+  td {
+    padding: 0.65rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  th:nth-child(3),
+  td:nth-child(3),
+  th:nth-child(6),
+  td:nth-child(6) {
+    display: none;
+  }
 }
