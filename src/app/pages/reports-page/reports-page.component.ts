@@ -1,5 +1,6 @@
 ﻿import { Component, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import * as XLSX from 'xlsx';
 import { TRANSACTIONS } from '../../mock-data/dashboard.data';
 import { I18nService } from '../../core/i18n.service';
 
@@ -61,26 +62,32 @@ export class ReportsPageComponent {
     return [...monthly.values()].sort((a, b) => a.monthKey.localeCompare(b.monthKey));
   }
 
-  exportCsv(): void {
+  exportXlsx(): void {
     const rows = [
       [this.text.month, this.text.revenue, this.text.completed, this.text.pending, this.text.cancelled],
       ...this.monthlyReports.map((report) => [
         report.monthLabel,
-        `${report.revenue}`,
-        `${report.completed}`,
-        `${report.pending}`,
-        `${report.cancelled}`
+        report.revenue,
+        report.completed,
+        report.pending,
+        report.cancelled
       ])
     ];
 
-    const csv = rows.map((row) => row.join(',')).join('\n');
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const workbook = XLSX.utils.book_new();
+    const sheet = XLSX.utils.aoa_to_sheet(rows);
+    sheet['!cols'] = [{ wch: 16 }, { wch: 14 }, { wch: 12 }, { wch: 12 }, { wch: 12 }];
+    XLSX.utils.book_append_sheet(workbook, sheet, this.text.monthlySummary);
+
+    const buffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([buffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement('a');
     anchor.href = url;
-    anchor.download = 'insight-board-reports.csv';
+    anchor.download = 'insight-board-reports.xlsx';
     anchor.click();
     URL.revokeObjectURL(url);
   }
 }
-
