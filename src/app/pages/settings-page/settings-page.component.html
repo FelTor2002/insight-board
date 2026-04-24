@@ -1,0 +1,20 @@
+﻿<header class="page-header">
+  <h2>{{ text.title }}</h2>
+  <p>{{ text.description }}</p>
+</header>
+
+<section class="card">
+  <h3>{{ text.languagePreference }}</h3>
+  <div class="language-switch" role="group" aria-label="language preference">
+    <button type="button" [class.active]="language === 'es'" (click)="setLanguage('es')">ES</button>
+    <button type="button" [class.active]="language === 'en'" (click)="setLanguage('en')">EN</button>
+  </div>
+</section>
+
+<section class="card">
+  <h3>{{ text.preview }}</h3>
+  <p>{{ text.language }}: <strong>{{ language.toUpperCase() }}</strong></p>
+  <p>{{ 57200 | currency: 'USD' : 'symbol' : '1.0-0' : locale }}</p>
+  <p>{{ '2026-04-24' | date: 'fullDate' : '' : locale }}</p>
+</section>
+

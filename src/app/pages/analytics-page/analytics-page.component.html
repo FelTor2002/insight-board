@@ -1,0 +1,53 @@
+﻿<header class="page-header">
+  <h2>{{ text.title }}</h2>
+  <p>{{ text.description }}</p>
+</header>
+
+<section class="metrics-grid">
+  <article class="card">
+    <p>{{ text.topCategory }}</p>
+    <h3>{{ topCategory }}</h3>
+  </article>
+
+  <article class="card">
+    <p>{{ text.avgTicket }}</p>
+    <h3>{{ averageTicket }}</h3>
+  </article>
+
+  <article class="card">
+    <p>{{ text.completionRate }}</p>
+    <h3>{{ completionRate }}</h3>
+  </article>
+</section>
+
+<section class="details-grid">
+  <article class="card">
+    <h3>{{ text.categoryPerformance }}</h3>
+    <div class="rows">
+      @for (item of categoryBreakdown; track item.category) {
+      <div class="row">
+        <div class="row-title">
+          <span>{{ item.category }}</span>
+          <strong>{{ item.share.toFixed(1) }}%</strong>
+        </div>
+        <div class="bar">
+          <span [style.width.%]="item.share"></span>
+        </div>
+      </div>
+      }
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>{{ text.channelPerformance }}</h3>
+    <ul>
+      @for (channel of channelBreakdown; track channel.channel) {
+      <li>
+        <span>{{ channel.channel }}</span>
+        <strong>{{ channel.count }} {{ text.transactions }}</strong>
+      </li>
+      }
+    </ul>
+  </article>
+</section>
+

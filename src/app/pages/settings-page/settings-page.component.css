@@ -1,0 +1,50 @@
+﻿:host {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+}
+
+.page-header p {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--card-shadow);
+}
+
+.card h3 {
+  margin: 0 0 0.75rem;
+}
+
+.language-switch {
+  display: inline-flex;
+  background: #0f1525;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+
+.language-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.language-switch button.active {
+  background: #1f2c44;
+  color: var(--text-main);
+}
+

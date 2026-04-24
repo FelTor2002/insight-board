@@ -1,4 +1,4 @@
-.filter-bar {
+﻿.filter-bar {
   display: grid;
   grid-template-columns: repeat(6, minmax(120px, 1fr));
   gap: 0.85rem;

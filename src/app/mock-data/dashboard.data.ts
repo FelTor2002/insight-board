@@ -1,4 +1,4 @@
-import { Transaction, TransactionStatus } from '../types/dashboard.types';
+﻿import { Transaction, TransactionStatus } from '../types/dashboard.types';
 
 export const CATEGORY_OPTIONS = ['All', 'Software', 'Marketing', 'Hardware', 'Consulting', 'Support'];
 

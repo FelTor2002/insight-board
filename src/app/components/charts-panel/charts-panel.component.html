@@ -1,16 +1,22 @@
-<section class="charts-grid">
+﻿<section class="charts-grid">
   <article class="chart-card">
-    <h3>Monthly Sales</h3>
-    <canvas #monthlySalesCanvas></canvas>
+    <h3>{{ labels.monthlySales }}</h3>
+    <div class="chart-canvas-wrap">
+      <canvas #monthlySalesCanvas></canvas>
+    </div>
   </article>
 
   <article class="chart-card">
-    <h3>Revenue by Category</h3>
-    <canvas #categorySalesCanvas></canvas>
+    <h3>{{ labels.revenueByCategory }}</h3>
+    <div class="chart-canvas-wrap">
+      <canvas #categorySalesCanvas></canvas>
+    </div>
   </article>
 
   <article class="chart-card chart-wide">
-    <h3>User Channel Distribution</h3>
-    <canvas #channelDistributionCanvas></canvas>
+    <h3>{{ labels.userChannelDistribution }}</h3>
+    <div class="chart-canvas-wrap">
+      <canvas #channelDistributionCanvas></canvas>
+    </div>
   </article>
 </section>

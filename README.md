@@ -1,4 +1,4 @@
-# Insight Board
+﻿# Insight Board
 
 Modern analytics dashboard built with Angular and TypeScript. This project is designed as a portfolio highlight focused on frontend quality, data visualization, and UX.
 
@@ -6,7 +6,7 @@ Modern analytics dashboard built with Angular and TypeScript. This project is de
 Felipe Torres
 
 ## Description
-Insight Board is a responsive SaaS-style dashboard with a dark theme, KPI cards, interactive filters, charts, and a transactions table using local mock data.
+Insight Board is a responsive SaaS-style dashboard with a dark theme, bilingual interface (English/Spanish), KPI cards, interactive filters, charts, and reporting views powered by local mock data.
 
 ## Features
 - KPI cards:
@@ -28,9 +28,17 @@ Insight Board is a responsive SaaS-style dashboard with a dark theme, KPI cards,
   - Date range
 - UI/UX:
   - Dark SaaS design
-  - Sidebar navigation
+  - Sidebar navigation with routed sections
   - Rounded cards with spacing hierarchy
   - Fully responsive for desktop, tablet, and mobile
+- Multi-view architecture:
+  - Dashboard view (KPIs, charts, filters, transactions)
+  - Analytics view (category and channel insights)
+  - Reports view (monthly summary and CSV export)
+  - Settings view (language preferences and locale preview)
+- Internationalization:
+  - English and Spanish support
+  - Locale-aware date and currency formatting
 
 ## Tech Stack
 - Angular (standalone components)
@@ -43,6 +51,8 @@ Insight Board is a responsive SaaS-style dashboard with a dark theme, KPI cards,
 ```text
 src/
   app/
+    core/
+      i18n.service.ts
     components/
       charts-panel/
       filter-bar/
@@ -50,6 +60,11 @@ src/
       transactions-table/
     mock-data/
       dashboard.data.ts
+    pages/
+      dashboard-page/
+      analytics-page/
+      reports-page/
+      settings-page/
     types/
       dashboard.types.ts
     app.ts

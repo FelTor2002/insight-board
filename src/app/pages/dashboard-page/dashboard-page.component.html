@@ -1,0 +1,39 @@
+﻿<header class="hero">
+  <h2>{{ text.heroTitle }}</h2>
+  <p>{{ text.heroDescription }}</p>
+</header>
+
+<section class="kpi-grid">
+  @for (metric of kpis; track metric.label) {
+  <app-kpi-card
+    [label]="metric.label"
+    [value]="metric.value"
+    [trend]="metric.trend"
+    [trendPositive]="metric.trendPositive"
+  />
+  }
+</section>
+
+<section class="panel">
+  <h3>{{ text.filtersTitle }}</h3>
+  <app-filter-bar
+    [filter]="filters"
+    [categories]="categories"
+    [statuses]="statuses"
+    [labels]="text.filterLabels"
+    [categoryLabels]="categoryLabelMap"
+    [statusLabels]="statusLabelMap"
+    (filterChange)="updateFilters($event)"
+    (clearFilters)="resetFilters()"
+  />
+</section>
+
+<app-charts-panel [transactions]="filteredTransactions" [locale]="locale" [labels]="text.charts" />
+<app-transactions-table
+  [transactions]="filteredTransactions"
+  [labels]="text.table"
+  [statusLabels]="statusLabelMap"
+  [categoryLabels]="categoryLabelMap"
+  [locale]="locale"
+/>
+

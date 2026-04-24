@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DashboardFilter, TransactionStatus } from '../../types/dashboard.types';
 
@@ -13,6 +13,17 @@ export class FilterBarComponent {
   @Input({ required: true }) filter!: DashboardFilter;
   @Input({ required: true }) categories!: string[];
   @Input({ required: true }) statuses!: Array<TransactionStatus | 'All'>;
+  @Input({ required: true }) labels!: {
+    category: string;
+    status: string;
+    searchCustomer: string;
+    searchPlaceholder: string;
+    dateFrom: string;
+    dateTo: string;
+    clear: string;
+  };
+  @Input({ required: true }) categoryLabels!: Record<string, string>;
+  @Input({ required: true }) statusLabels!: Record<TransactionStatus | 'All', string>;
 
   @Output() filterChange = new EventEmitter<Partial<DashboardFilter>>();
   @Output() clearFilters = new EventEmitter<void>();

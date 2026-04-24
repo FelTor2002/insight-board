@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "insight-board",
   "version": "0.0.0",
   "scripts": {
@@ -31,3 +31,4 @@
     "vitest": "^4.0.8"
   }
 }
+

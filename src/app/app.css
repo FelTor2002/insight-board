@@ -15,6 +15,9 @@
   padding: 1.4rem 1rem;
   background: rgba(9, 13, 24, 0.85);
   backdrop-filter: blur(6px);
+  display: grid;
+  gap: 1rem;
+  align-content: start;
 }
 
 .sidebar h1 {
@@ -23,7 +26,7 @@
 }
 
 .sidebar p {
-  margin: 0.4rem 0 1.2rem;
+  margin: 0.4rem 0 0;
   color: var(--text-muted);
   font-size: 0.82rem;
 }
@@ -47,44 +50,38 @@
   background: rgba(64, 214, 255, 0.12);
 }
 
+.language-switch {
+  display: inline-flex;
+  background: #0f1525;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.2rem;
+  width: fit-content;
+}
+
+.language-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.language-switch button.active {
+  background: #1f2c44;
+  color: var(--text-main);
+}
+
 .main-content {
   padding: 1.25rem;
-  display: grid;
-  gap: 1rem;
-}
-
-.hero h2 {
-  margin: 0;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-}
-
-.hero p {
-  margin: 0.35rem 0 0;
-  color: var(--text-muted);
-}
-
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.panel {
-  background: var(--surface-2);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 1rem;
-  box-shadow: var(--card-shadow);
-}
-
-.panel h3 {
-  margin: 0 0 0.75rem;
-  font-size: 0.95rem;
+  display: block;
 }
 
 @media (max-width: 1080px) {
   .layout {
-    grid-template-columns: 76px 1fr;
+    grid-template-columns: 80px 1fr;
   }
 
   .sidebar h1,
@@ -98,8 +95,23 @@
     background: rgba(255, 255, 255, 0.04);
   }
 
-  .kpi-grid {
-    grid-template-columns: 1fr 1fr;
+  .language-switch button {
+    font-size: 0;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+  }
+
+  .language-switch button::after {
+    font-size: 0.75rem;
+  }
+
+  .language-switch button:first-child::after {
+    content: 'ES';
+  }
+
+  .language-switch button:last-child::after {
+    content: 'EN';
   }
 }
 
@@ -138,7 +150,14 @@
     padding: 0.85rem;
   }
 
-  .kpi-grid {
-    grid-template-columns: 1fr;
+  .language-switch button {
+    font-size: 0.75rem;
+    width: auto;
+    height: auto;
+    padding: 0.35rem 0.65rem;
+  }
+
+  .language-switch button::after {
+    content: none;
   }
 }

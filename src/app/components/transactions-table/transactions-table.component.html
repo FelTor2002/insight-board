@@ -1,19 +1,19 @@
-<section class="table-shell">
+﻿<section class="table-shell">
   <header>
-    <h2>Recent Transactions</h2>
-    <p>{{ transactions.length }} records</p>
+    <h2>{{ labels.title }}</h2>
+    <p>{{ transactions.length }} {{ labels.records }}</p>
   </header>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Client</th>
-          <th>Category</th>
-          <th>Amount</th>
-          <th>Status</th>
-          <th>Date</th>
+          <th>{{ labels.id }}</th>
+          <th>{{ labels.client }}</th>
+          <th>{{ labels.category }}</th>
+          <th>{{ labels.amount }}</th>
+          <th>{{ labels.status }}</th>
+          <th>{{ labels.date }}</th>
         </tr>
       </thead>
       <tbody>
@@ -21,16 +21,16 @@
         <tr>
           <td>{{ tx.id }}</td>
           <td>{{ tx.customer }}</td>
-          <td>{{ tx.category }}</td>
-          <td>{{ tx.amount | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+          <td>{{ categoryLabels[tx.category] }}</td>
+          <td>{{ tx.amount | currency: 'USD' : 'symbol' : '1.0-0' : locale }}</td>
           <td>
-            <span class="badge" [ngClass]="statusClass(tx.status)">{{ tx.status }}</span>
+            <span class="badge" [ngClass]="statusClass(tx.status)">{{ statusLabels[tx.status] }}</span>
           </td>
-          <td>{{ tx.date | date: 'mediumDate' }}</td>
+          <td>{{ tx.date | date: 'mediumDate' : '' : locale }}</td>
         </tr>
         } @empty {
         <tr>
-          <td colspan="6" class="empty">No transactions match your filters.</td>
+          <td colspan="6" class="empty">{{ labels.empty }}</td>
         </tr>
         }
       </tbody>

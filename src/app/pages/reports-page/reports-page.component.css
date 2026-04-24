@@ -1,0 +1,66 @@
+﻿:host {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+}
+
+.page-header p {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+}
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--card-shadow);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+button {
+  border: 1px solid var(--border-color);
+  background: #1f2c44;
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th,
+td {
+  padding: 0.8rem 0.6rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+}
+
+th {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+

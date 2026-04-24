@@ -1,4 +1,4 @@
-import {
+﻿import {
   AfterViewInit,
   Component,
   ElementRef,
@@ -19,6 +19,14 @@ import { Transaction } from '../../types/dashboard.types';
 })
 export class ChartsPanelComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input({ required: true }) transactions: Transaction[] = [];
+  @Input({ required: true }) labels!: {
+    monthlySales: string;
+    revenueByCategory: string;
+    userChannelDistribution: string;
+    salesDataset: string;
+    categoryRevenueDataset: string;
+  };
+  @Input() locale = 'en-US';
 
   @ViewChild('monthlySalesCanvas') monthlySalesCanvas!: ElementRef<HTMLCanvasElement>;
   @ViewChild('categorySalesCanvas') categorySalesCanvas!: ElementRef<HTMLCanvasElement>;
@@ -28,6 +36,7 @@ export class ChartsPanelComponent implements AfterViewInit, OnChanges, OnDestroy
   private barChart?: Chart;
   private doughnutChart?: Chart;
   private viewReady = false;
+  private lastDataSignature = '';
 
   ngAfterViewInit(): void {
     this.viewReady = true;
@@ -58,13 +67,28 @@ export class ChartsPanelComponent implements AfterViewInit, OnChanges, OnDestroy
 
     this.lineChart = new Chart(lineCtx, {
       type: 'line',
-      data: { labels: [], datasets: [{ data: [], label: 'Sales', borderColor: '#40d6ff', backgroundColor: 'rgba(64, 214, 255, 0.15)', tension: 0.35, fill: true }] },
+      data: {
+        labels: [],
+        datasets: [
+          {
+            data: [],
+            label: this.labels.salesDataset,
+            borderColor: '#40d6ff',
+            backgroundColor: 'rgba(64, 214, 255, 0.15)',
+            tension: 0.35,
+            fill: true
+          }
+        ]
+      },
       options: this.baseOptions()
     });
 
     this.barChart = new Chart(barCtx, {
       type: 'bar',
-      data: { labels: [], datasets: [{ data: [], label: 'Category Revenue', borderRadius: 8, backgroundColor: '#95f985' }] },
+      data: {
+        labels: [],
+        datasets: [{ data: [], label: this.labels.categoryRevenueDataset, borderRadius: 8, backgroundColor: '#95f985' }]
+      },
       options: this.baseOptions()
     });
 
@@ -86,6 +110,16 @@ export class ChartsPanelComponent implements AfterViewInit, OnChanges, OnDestroy
   }
 
   private refreshCharts(): void {
+    const currentSignature = JSON.stringify({
+      locale: this.locale,
+      labels: this.labels,
+      data: this.transactions.map((tx) => [tx.id, tx.amount, tx.category, tx.channel, tx.date, tx.status, tx.customer])
+    });
+    if (currentSignature === this.lastDataSignature) {
+      return;
+    }
+    this.lastDataSignature = currentSignature;
+
     const monthly = this.sumByMonth(this.transactions);
     const byCategory = this.sumByKey(this.transactions, 'category');
     const byChannel = this.sumByKey(this.transactions, 'channel');
@@ -93,19 +127,21 @@ export class ChartsPanelComponent implements AfterViewInit, OnChanges, OnDestroy
     if (this.lineChart) {
       this.lineChart.data.labels = Object.keys(monthly);
       this.lineChart.data.datasets[0].data = Object.values(monthly);
-      this.lineChart.update();
+      this.lineChart.data.datasets[0].label = this.labels.salesDataset;
+      this.lineChart.update('none');
     }
 
     if (this.barChart) {
       this.barChart.data.labels = Object.keys(byCategory);
       this.barChart.data.datasets[0].data = Object.values(byCategory);
-      this.barChart.update();
+      this.barChart.data.datasets[0].label = this.labels.categoryRevenueDataset;
+      this.barChart.update('none');
     }
 
     if (this.doughnutChart) {
       this.doughnutChart.data.labels = Object.keys(byChannel);
       this.doughnutChart.data.datasets[0].data = Object.values(byChannel);
-      this.doughnutChart.update();
+      this.doughnutChart.update('none');
     }
   }
 
@@ -113,11 +149,17 @@ export class ChartsPanelComponent implements AfterViewInit, OnChanges, OnDestroy
     const totals = new Map<string, number>();
 
     transactions.forEach((item) => {
-      const monthLabel = new Date(item.date).toLocaleString('en-US', { month: 'short' });
-      totals.set(monthLabel, (totals.get(monthLabel) ?? 0) + item.amount);
+      const monthKey = item.date.slice(0, 7);
+      totals.set(monthKey, (totals.get(monthKey) ?? 0) + item.amount);
     });
 
-    return Object.fromEntries(totals.entries());
+    const ordered = [...totals.entries()].sort(([a], [b]) => a.localeCompare(b));
+    const formatted = ordered.map(([monthKey, total]) => {
+      const monthLabel = new Date(`${monthKey}-01`).toLocaleString(this.locale, { month: 'short' });
+      return [monthLabel, total] as const;
+    });
+
+    return Object.fromEntries(formatted);
   }
 
   private sumByKey(transactions: Transaction[], key: 'category' | 'channel'): Record<string, number> {
@@ -134,6 +176,7 @@ export class ChartsPanelComponent implements AfterViewInit, OnChanges, OnDestroy
     return {
       responsive: true,
       maintainAspectRatio: false,
+      resizeDelay: 120,
       plugins: {
         legend: { labels: { color: '#d3d8e2' } }
       },
