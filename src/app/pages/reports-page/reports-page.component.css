@@ -46,6 +46,10 @@ button {
   overflow-x: auto;
 }
 
+.mobile-reports {
+  display: none;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -82,14 +86,39 @@ th {
     width: 100%;
   }
 
-  table {
-    min-width: 520px;
+  .desktop-table {
+    display: none;
   }
 
-  th,
-  td {
-    padding: 0.7rem 0.45rem;
+  .mobile-reports {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .mobile-report-item {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.7rem;
+    background: rgba(15, 21, 37, 0.6);
+  }
+
+  .mobile-report-item h4 {
+    margin: 0 0 0.55rem;
+    font-size: 0.95rem;
+  }
+
+  .mobile-report-item p {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    color: var(--text-muted);
     font-size: 0.84rem;
+  }
+
+  .mobile-report-item strong {
+    color: var(--text-main);
   }
 }
 

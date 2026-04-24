@@ -46,6 +46,12 @@ interface DashboardText {
     salesEfficiency: string;
     monthOverMonth: string;
   };
+  mobile: {
+    quickView: string;
+    desktopHint: string;
+    recentActivity: string;
+    goToReports: string;
+  };
 }
 
 interface AnalyticsText {
@@ -144,6 +150,12 @@ const TRANSLATIONS: Record<Language, AppText> = {
         userMomentum: 'user momentum',
         salesEfficiency: 'sales efficiency',
         monthOverMonth: 'month-over-month trend'
+      },
+      mobile: {
+        quickView: 'Quick Mobile View',
+        desktopHint: 'Desktop includes advanced filters, charts, and full transaction table.',
+        recentActivity: 'Recent Activity',
+        goToReports: 'Go to Reports for full monthly breakdown'
       }
     },
     analytics: {
@@ -237,6 +249,12 @@ const TRANSLATIONS: Record<Language, AppText> = {
         userMomentum: 'impulso de usuarios',
         salesEfficiency: 'eficiencia comercial',
         monthOverMonth: 'tendencia mes a mes'
+      },
+      mobile: {
+        quickView: 'Vista Rápida Móvil',
+        desktopHint: 'En desktop se muestran filtros avanzados, gráficas y tabla completa.',
+        recentActivity: 'Actividad Reciente',
+        goToReports: 'Ve a Reportes para el desglose mensual completo'
       }
     },
     analytics: {

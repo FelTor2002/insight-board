@@ -14,7 +14,7 @@
   }
 </section>
 
-<section class="panel">
+<section class="panel desktop-only">
   <h3>{{ text.filtersTitle }}</h3>
   <app-filter-bar
     [filter]="filters"
@@ -28,12 +28,37 @@
   />
 </section>
 
-<app-charts-panel [transactions]="filteredTransactions" [locale]="locale" [labels]="text.charts" />
+<app-charts-panel class="desktop-only" [transactions]="filteredTransactions" [locale]="locale" [labels]="text.charts" />
 <app-transactions-table
+  class="desktop-only"
   [transactions]="filteredTransactions"
   [labels]="text.table"
   [statusLabels]="statusLabelMap"
   [categoryLabels]="categoryLabelMap"
   [locale]="locale"
 />
+
+<section class="panel mobile-only">
+  <h3>{{ text.mobile.quickView }}</h3>
+  <p class="mobile-hint">{{ text.mobile.desktopHint }}</p>
+</section>
+
+<section class="panel mobile-only">
+  <h3>{{ text.mobile.recentActivity }}</h3>
+  <ul class="mobile-list">
+    @for (tx of mobileTransactions; track tx.id) {
+    <li>
+      <div>
+        <strong>{{ tx.customer }}</strong>
+        <p>{{ categoryLabelMap[tx.category] }}</p>
+      </div>
+      <div class="mobile-list-meta">
+        <strong>{{ tx.amount | currency: 'USD' : 'symbol' : '1.0-0' : locale }}</strong>
+        <span>{{ statusLabelMap[tx.status] }}</span>
+      </div>
+    </li>
+    }
+  </ul>
+  <p class="mobile-hint">{{ text.mobile.goToReports }}</p>
+</section>
 

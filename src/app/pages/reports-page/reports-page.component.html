@@ -9,7 +9,7 @@
     <button type="button" (click)="exportXlsx()">{{ text.exportXlsx }}</button>
   </div>
 
-  <div class="table-wrap">
+  <div class="table-wrap desktop-table">
     <table>
       <thead>
         <tr>
@@ -32,6 +32,18 @@
         }
       </tbody>
     </table>
+  </div>
+
+  <div class="mobile-reports">
+    @for (report of monthlyReports; track report.monthKey) {
+    <article class="mobile-report-item">
+      <h4>{{ report.monthLabel }}</h4>
+      <p><span>{{ text.revenue }}</span><strong>{{ report.revenue | currency: 'USD' : 'symbol' : '1.0-0' : locale }}</strong></p>
+      <p><span>{{ text.completed }}</span><strong>{{ report.completed }}</strong></p>
+      <p><span>{{ text.pending }}</span><strong>{{ report.pending }}</strong></p>
+      <p><span>{{ text.cancelled }}</span><strong>{{ report.cancelled }}</strong></p>
+    </article>
+    }
   </div>
 </section>
 

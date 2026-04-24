@@ -1,4 +1,5 @@
-﻿import { Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { CATEGORY_OPTIONS, STATUS_OPTIONS, TRANSACTIONS } from '../../mock-data/dashboard.data';
 import { DashboardFilter, KpiMetric, Transaction } from '../../types/dashboard.types';
 import { KpiCardComponent } from '../../components/kpi-card/kpi-card.component';
@@ -10,7 +11,7 @@ import { I18nService } from '../../core/i18n.service';
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [KpiCardComponent, FilterBarComponent, TransactionsTableComponent, ChartsPanelComponent],
+  imports: [CurrencyPipe, KpiCardComponent, FilterBarComponent, TransactionsTableComponent, ChartsPanelComponent],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.css'
 })
@@ -88,6 +89,10 @@ export class DashboardPageComponent {
     ];
   }
 
+  get mobileTransactions(): Transaction[] {
+    return this.filteredTransactions.slice(0, 4);
+  }
+
   updateFilters(partial: Partial<DashboardFilter>): void {
     this.filters = { ...this.filters, ...partial };
     this.applyFilters();
@@ -147,4 +152,5 @@ export class DashboardPageComponent {
     return ((last - previous) / previous) * 100;
   }
 }
+
 
