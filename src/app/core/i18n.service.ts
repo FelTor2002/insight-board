@@ -68,7 +68,7 @@ interface ReportsText {
   completed: string;
   pending: string;
   cancelled: string;
-  exportCsv: string;
+  exportXlsx: string;
 }
 
 interface SettingsText {
@@ -165,7 +165,7 @@ const TRANSLATIONS: Record<Language, AppText> = {
       completed: 'Completed',
       pending: 'Pending',
       cancelled: 'Cancelled',
-      exportCsv: 'Export CSV'
+      exportXlsx: 'Export XLSX'
     },
     settings: {
       title: 'Settings',
@@ -258,7 +258,7 @@ const TRANSLATIONS: Record<Language, AppText> = {
       completed: 'Completadas',
       pending: 'Pendientes',
       cancelled: 'Canceladas',
-      exportCsv: 'Exportar CSV'
+      exportXlsx: 'Exportar XLSX'
     },
     settings: {
       title: 'Ajustes',
