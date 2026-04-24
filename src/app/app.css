@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: 240px 1fr;
   background: radial-gradient(circle at 25% 10%, #18233a 0%, #0b1020 45%, #090d18 100%);
+  overflow-x: hidden;
 }
 
 .sidebar {
@@ -77,6 +78,7 @@
 .main-content {
   padding: 1.25rem;
   display: block;
+  min-width: 0;
 }
 
 @media (max-width: 1080px) {
@@ -142,8 +144,9 @@
     gap: 0.45rem;
     grid-column: 1 / -1;
     overflow-x: auto;
-    padding-bottom: 0.1rem;
+    padding-bottom: 0.2rem;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 
   .sidebar a {
@@ -154,7 +157,7 @@
   }
 
   .main-content {
-    padding: 0.85rem;
+    padding: 0.75rem;
   }
 
   .language-switch button {
@@ -174,7 +177,25 @@
 }
 
 @media (max-width: 560px) {
+  .sidebar {
+    padding: 0.7rem 0.7rem 0.55rem;
+    gap: 0.5rem;
+  }
+
+  .sidebar h1 {
+    font-size: 1rem;
+  }
+
   .sidebar p {
     display: none;
+  }
+
+  .sidebar a {
+    font-size: 0.76rem;
+    padding: 0.4rem 0.55rem;
+  }
+
+  .main-content {
+    padding: 0.6rem;
   }
 }
