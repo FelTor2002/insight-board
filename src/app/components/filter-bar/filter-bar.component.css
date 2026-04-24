@@ -38,8 +38,12 @@ input {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .filter-bar {
     grid-template-columns: 1fr;
+  }
+
+  .ghost {
+    width: 100%;
   }
 }
