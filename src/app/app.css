@@ -4,7 +4,7 @@
 }
 
 .layout {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: 240px 1fr;
   background: radial-gradient(circle at 25% 10%, #18233a 0%, #0b1020 45%, #090d18 100%);
@@ -83,6 +83,12 @@
 
 @media (max-width: 1080px) {
   .layout {
+    min-height: 100dvh;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1080px) {
+  .layout {
     grid-template-columns: 80px 1fr;
   }
 
@@ -120,17 +126,16 @@
 @media (max-width: 720px) {
   .layout {
     grid-template-columns: 1fr;
+    min-height: 100dvh;
   }
 
   .sidebar {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    padding: 0.8rem 1rem;
-    gap: 0.7rem;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 0.8rem 0.65rem;
+    gap: 0.55rem;
   }
 
   .sidebar h1,
@@ -142,7 +147,8 @@
   .sidebar nav {
     display: flex;
     gap: 0.45rem;
-    grid-column: 1 / -1;
+    width: 100%;
+    flex-wrap: wrap;
     overflow-x: auto;
     padding-bottom: 0.2rem;
     -webkit-overflow-scrolling: touch;
@@ -172,13 +178,14 @@
   }
 
   .sidebar p {
-    font-size: 0.72rem;
+    font-size: 0.74rem;
+    margin-top: 0;
   }
 }
 
 @media (max-width: 560px) {
   .sidebar {
-    padding: 0.7rem 0.7rem 0.55rem;
+    padding: 0.7rem 0.6rem 0.55rem;
     gap: 0.5rem;
   }
 
@@ -191,8 +198,8 @@
   }
 
   .sidebar a {
-    font-size: 0.76rem;
-    padding: 0.4rem 0.55rem;
+    font-size: 0.75rem;
+    padding: 0.38rem 0.52rem;
   }
 
   .main-content {
